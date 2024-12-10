@@ -1,0 +1,13 @@
+package com.inconso.inwms.model.sst.basis;
+
+import com.inconso.inwms.sst.model.basis.CompSstSaGruppenSaZuo;
+
+
+/**
+ * the anchor for the project-class
+ * 
+ * @author dschubert
+ * 
+ */
+public class SstSaGruppenSaZuo extends CompSstSaGruppenSaZuo {
+}

@@ -1,0 +1,14 @@
+package adventofcode2;
+
+import java.util.ArrayList;
+
+public class AdventOfCode {
+
+	public static void main(String[] args) {
+
+		// DayOne.readFile();
+		ArrayList<String> asd = new ArrayList<> ("sda", "www");
+		DayTwo.readFile();
+	}
+
+}

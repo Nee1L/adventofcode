@@ -1,0 +1,74 @@
+package adventofcode2;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public class DayThree {
+	public static void readFile() {
+		Pattern pattern = Pattern.compile("(mul\\(\\d+,\\d+\\))");
+		int res = 0;
+		int indexStart = 0;
+		int indexEnd = 0;
+		try {
+			File file = new File("D:\\workspaces\\adventofcode2\\adventofcode2\\src\\adventofcode2\\daythree.txt");
+			Scanner scanner = new Scanner(file);
+			while (scanner.hasNextLine()) {
+				String data = scanner.nextLine();
+				Scanner lol = new Scanner(data);
+				System.out.println(data);
+				// indexStart = data.indexOf("do\\(\\)");
+				indexEnd = data.indexOf("don't()", indexStart);
+				String buff = new String(data);
+				String loop = new String(data);
+				System.out.println(loop.contains("do()") || loop.contains("don't()"));
+				while (loop.contains("do()")) {
+					buff = data.substring(indexStart, indexEnd);
+					loop = data.substring(indexStart, data.length());
+					System.out.println(buff);
+					if (data.indexOf("do()", indexEnd) != -1) {
+						indexStart = data.indexOf("do()", indexEnd);
+					} else {
+						break;
+					}
+					if (data.indexOf("don't()", indexStart) != -1) {
+						indexEnd = data.indexOf("don't()", indexStart);
+					} else {
+						indexEnd = data.length() - 1;
+					}
+					Matcher matcher = pattern.matcher(buff);
+					while (matcher.find()) {
+						String match = matcher.group(1);
+						Pattern patternNumbers = Pattern.compile("(\\d+,\\d+)");
+						Matcher matcherNumbers = patternNumbers.matcher(match);
+						while (matcherNumbers.find()) {
+							String numbers = matcherNumbers.group(1);
+							String[] arr = numbers.split(",");
+							res += Integer.parseInt(arr[0]) * Integer.parseInt(arr[1]);
+						}
+						System.out.println(matcher.group(1));
+					}
+				}
+
+//				Matcher matcher = pattern.matcher(data);
+//				while (matcher.find()) {
+//					String match = matcher.group(1);
+//					Pattern patternNumbers = Pattern.compile("(\\d+,\\d+)");
+//					Matcher matcherNumbers = patternNumbers.matcher(match);
+//					while (matcherNumbers.find()) {
+//						String numbers = matcherNumbers.group(1);
+//						String[] arr = numbers.split(",");
+//						res += Integer.parseInt(arr[0]) * Integer.parseInt(arr[1]);
+//					}
+//					System.out.println(matcher.group(1));
+//				}
+			}
+			System.out.println(res);
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+	}
+}

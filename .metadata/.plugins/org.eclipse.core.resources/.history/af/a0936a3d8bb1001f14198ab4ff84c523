@@ -1,0 +1,41 @@
+package adventofcode2;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class DayOne {
+
+	private static int count(ArrayList<Integer> left,ArrayList<Integer> right) {
+		int sum = 0;
+		for(int i = 0;i<left.size();i++) {
+			sum+= Math.abs(left.get(i) - right.get(i));
+		}
+		return sum;
+	}
+
+	public static void readFile() {
+		ArrayList<Integer> left = new ArrayList<>();
+		ArrayList<Integer> right = new ArrayList<>();
+		try {
+			File file = new File("D:\\workspaces\\adventofcode2\\adventofcode2\\src\\adventofcode2\\dayone.txt");
+			Scanner scanner = new Scanner(file);
+			while (scanner.hasNextLine()) {
+				String data = scanner.nextLine();
+				String[] numbers = data.split("   ");
+				left.add(Integer.parseInt(numbers[0]));
+				right.add(Integer.parseInt(numbers[1]));
+				System.out.println(data);
+			}
+			for (Integer bebra : left) {
+				System.out.println(bebra);
+			}
+			System.out.println(count(left,right));
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+	}
+}

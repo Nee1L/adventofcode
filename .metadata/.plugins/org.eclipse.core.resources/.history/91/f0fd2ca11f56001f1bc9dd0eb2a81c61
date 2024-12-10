@@ -1,0 +1,81 @@
+package com.inconso.inwms.model.bas.schul;
+
+import com.inconso.inwms.model.gen.bas.schul.GenBeispielKom;
+
+public class BeispielKom extends GenBeispielKom {
+
+  public BeispielKom() {
+    super();
+  }
+
+  /**
+   * nur Sätze für das aktuelle Lager finden
+   *
+   * @see com.inconso.model.persistentFramework.commonObjects.AbstractDefaultPersistentObject#initializeExampleObject()
+   */
+  @Override
+  public void initializeExampleObject() {
+      super.initializeExampleObject();
+      Laeger laeger = new Laeger();
+      laeger.setLager(HelasInitFactory.getIdLager(this));
+      setLaeger(laeger);
+  }
+  /**
+   * einen neuen Satz einerseits mit dem aktuellen Lager belegen und defaults fixieren
+   *
+   * @see com.inconso.model.persistentFramework.commonObjects.AbstractDefaultPersistentObject#initializeRegisteredObject()
+   */
+  @Override
+  public void initializeRegisteredObject() {
+      super.initializeRegisteredObject();
+      Laeger laeger = new Laeger();
+      laeger.setLager(HelasInitFactory.getIdLager(this));
+      setLaeger(laeger);
+  }
+  /**
+   * in bez-lang die returns durch space ersetzen (dieses Feld wird manuell zu den JavaTableColumn's eingefügt - die Länge muss dem maximalen Resultat
+   * aus getBezLang entsprechen!)
+   *
+   * @return
+   */
+  public String getBezLangDisp() {
+      return StringFunctions.getPlainText(getBezLang());
+  }
+  /**
+   * nur im Such-Modus die Eingabe nach bez-Lang weiterreichen (in javaDialogFields Feld entsprechend sperren, dass im Change / Inpit-Mode keine
+   * Eingabe möglich ist)
+   *
+   * @param bezLangDisp
+   */
+  public void setBezLangDisp(String bezLangDisp) {
+      if (isExampleObject()) setBezLang(bezLangDisp);
+  }
+  /**
+   * Beispiel für einen package-aufruf
+   *
+   * @return
+   */
+  public IUnitOfWork getButBeispiel() {
+      return null;
+  }
+  /**
+   * Beispiel füe einen package-aufruf - ItemClass: MultiSelectionButton
+   *
+   * @param uow
+   */
+  public void setButBeispiel(IUnitOfWork uow, Vector<Beispiel> selected) {
+      //
+      // sicherstellen, dass alle änderungen gespeichert sind...
+      InwmsRuntimeException.throwExceptionOnHasChanges(uow);
+      //
+      // dem user BASIS eine meldung schicken in der alle markierten gelistet sind
+      String pAbsender = "ICH";
+      String pEmpfaenger = "BASIS";
+      String pData = "markiert sind: ";
+      for (Beispiel beispiel : selected) {
+          pData += "<" + beispiel.getIdBeispiel() + ">";
+      }
+      PkgIpcSenden senden = new PkgIpcSenden(pAbsender, pEmpfaenger, pData);
+      HelasTransaction.executeDbPackage(uow, senden);
+  }
+}

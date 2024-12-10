@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 10 resources" deleteContents="false" description="Delete 10 resources" element1="/HelasDialoge" element10="/OfflineHelpGenerator" element2="/HelasModel" element3="/HelasModelToplink" element4="/InconsoFramework" element5="/IwfCodeGenerator" element6="/IwfDatenAbgleich" element7="/IwfOver" element8="/IwfReports" element9="/Komponenten" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="10" stamp="1733237986676"/>
+</session>

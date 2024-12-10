@@ -1,0 +1,11 @@
+package com.inconso.inwms.model.bas.es.ret;
+
+import com.inconso.inwms.model.gen.bas.es.ret.GenMvEsRetStundenleistung;
+
+public class MvEsRetStundenleistung extends GenMvEsRetStundenleistung {
+
+  public MvEsRetStundenleistung() {
+    super();
+  }
+
+}

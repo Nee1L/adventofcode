@@ -1,0 +1,62 @@
+package adventofcode2;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DayThree {
+	public static void readFile() {
+		Pattern pattern = Pattern.compile("(mul\\(\\d+,\\d+\\))");
+		int res = 0;
+		int indexStart = 0;
+		int indexEnd = 0;
+		try {
+			File file = new File("D:\\workspaces\\adventofcode2\\adventofcode2\\src\\adventofcode2\\daythree.txt");
+			Scanner scanner = new Scanner(file);
+			while (scanner.hasNextLine()) {
+				String data = scanner.nextLine();
+				System.out.println(data);
+				indexStart = data.indexOf("don't()");
+				indexEnd = data.indexOf("do()", indexStart);
+				String[] bebra = data.split("don't\\(\\)");
+				for (int i = 0; i < bebra.length; i++) {
+					String[] bebra2 = bebra[i].split("do\\(\\)");
+					for (int j = 0; j < bebra2.length; j++) {
+						Matcher matcher = pattern.matcher(bebra2[j]);
+						while (matcher.find()) {
+							String match = matcher.group(1);
+							Pattern patternNumbers = Pattern.compile("(\\d+,\\d+)");
+							Matcher matcherNumbers = patternNumbers.matcher(match);
+							while (matcherNumbers.find() && (j == 1 || i == 0)) {
+								String numbers = matcherNumbers.group(1);
+								System.out.println(numbers + " j=" + j);
+								String[] arr = numbers.split(",");
+								res += Integer.parseInt(arr[0]) * Integer.parseInt(arr[1]);
+							}
+						}
+						System.out.println(bebra2[j]);
+					}
+				}
+//				Matcher matcher = pattern.matcher(data);
+//				while (matcher.find()) {
+//					String match = matcher.group(1);
+//					Pattern patternNumbers = Pattern.compile("(\\d+,\\d+)");
+//					Matcher matcherNumbers = patternNumbers.matcher(match);
+//					while (matcherNumbers.find()) {
+//						String numbers = matcherNumbers.group(1);
+//						String[] arr = numbers.split(",");
+//						res += Integer.parseInt(arr[0]) * Integer.parseInt(arr[1]);
+//					}
+//					System.out.println(matcher.group(1));
+//				}
+			}
+			System.out.println(res);
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,2 @@
+INDEX VERSION 1.4+D:\workspaces\escif\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3629533621.index

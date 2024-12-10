@@ -1,0 +1,375 @@
+/*
+ * Generated on Fri Jul 31 15:57:33 CEST 2009
+ *   by Software from Andreas Boeyer, inconso AG
+ */
+package com.inconso.inwms.model.bas.wa;
+
+import java.awt.Font;
+import java.util.List;
+import com.inconso.inwms.es.EsGlobals;
+import com.inconso.inwms.es.EsKonstantenListHelper;
+import com.inconso.inwms.inwmsbas.model.util.exceptions.InwmsRuntimeException;
+import com.inconso.inwms.iwf.interfaces.IColorSupplier;
+import com.inconso.inwms.iwf.interfaces.IEsZentralKonfigModel;
+import com.inconso.inwms.model.bas.es.wa.EsWaTypVerlad;
+import com.inconso.inwms.model.bas.es.wa.WaWordTransMessages;
+import com.inconso.inwms.wabasis.model.CompWaWasteu;
+import com.inconso.iwf.model.bas.iwfh.Konstanten;
+import com.inconso.iwf.model.bas.iwfh.finder.KonstantenCache;
+import com.inconso.model.persistentFramework.util.PersistentObjectAttributeDescriptor;
+import com.inconso.persistence.IndirectionFactory;
+import com.inconso.persistence.ValueHolderInterface;
+
+public class WaWasteu extends CompWaWasteu implements IColorSupplier, IEsZentralKonfigModel {
+  // Bei Aenderungen am WA010 den Anzeigedialog LV010 mit Anpassen (WaWasteuLv)
+
+  protected ValueHolderInterface vWa010Belegsteu = IndirectionFactory.getOneToOneValueHolder();
+  protected VWa010Belegsteu      saveVWa010Belegsteu;
+  // Projektspezifische Erweiterungen START
+  // Pseudokey
+  private EsWaTypVerlad          myEsWaTypVerlad;
+  private String                 esTypVerlad;
+  private String                 esTypBestTypVerlad;
+  private String                 esArtSplittmeld;
+  private String                 esIdBrStrat;
+  private String                 esKnzBelegsatz;
+  private String                 esKnzDiffGba;
+  private String                 esKnzStornoGba;
+  private String                 esKnzTuete;
+  private String                 esKnzWmAufZuo;
+  private String                 esArtQtResRet;
+  private String                 esKnzVsReduzierer;
+  private String                 esKnzVsUmreifer;
+  private String                 esKnzTatWaNakoNabe;
+  private String                 esKnzDiffBrres;
+  private String                 esKnzRovo;
+  private String                 esKnzDiffNapi;
+  public WaWasteu() {
+    super();
+  }
+
+  @Override
+  public void cleanForSpeedRead() {
+    super.cleanForSpeedRead();
+    cleanVWa010BelegsteuForSpeedRead();
+  }
+
+  protected void cleanVWa010BelegsteuForSpeedRead() {
+    VWa010Belegsteu key = getVWa010Belegsteu();
+    if (key == null) {
+      key = new VWa010Belegsteu();
+      key.setContext(getContext());
+      key.initializeExampleObject();
+    }
+    key.keyComplete();
+    saveVWa010Belegsteu = new VWa010Belegsteu();
+    saveVWa010Belegsteu.keyCopy(key);
+    cleanVWa010BelegsteuKeyForSpeedRead(key);
+    keyToVWa010BelegsteuReadOnly(key);
+    key.keyToNull();
+    setVWa010Belegsteu(null);
+  }
+
+  @Override
+  public void initializeRegisteredObject() {
+    super.initializeRegisteredObject();
+    // Defaults belegen
+    setTypFreigabeBearb(KonstantenCache.getWertGCT("BEARB_FREI", "MAN"));
+    setTypKp(KonstantenCache.getWertGCT("KOMMPOS", "KOMM"));
+    setTypKommi(KonstantenCache.getWertGCT("KOMMI", "NORM"));
+    setTypAus(KonstantenCache.getWertGCT("AUS", "AL"));
+    setTypFreigabeAus(KonstantenCache.getWertGCT("AUS_FREI", "MAN"));
+    setTypFreigabeKa(KonstantenCache.getWertGCT("KA_FREI", "MAN"));
+    setTypCc(KonstantenCache.getWertGCT("CASE_CALC", "NORM"));
+    setIdStratRes("RESERV");
+    setTypTp("*");
+  }
+
+  protected void cleanVWa010BelegsteuKeyForSpeedRead(VWa010Belegsteu key) {
+  }
+
+  public List<Konstanten> getEsIdBrStratList() {
+    return EsKonstantenListHelper.getResStratList();
+  }
+
+  public String getEsArtSplittmeld() {
+    return esArtSplittmeld;
+  }
+
+  public String getEsKnzBelegsatz() {
+    return esKnzBelegsatz;
+  }
+
+  public String getEsKnzDiffGba() {
+    return esKnzDiffGba;
+  }
+
+  public String getEsKnzStornoGba() {
+    return esKnzStornoGba;
+  }
+
+  public String getEsKnzWmAufZuo() {
+    return esKnzWmAufZuo;
+  }
+
+  public String getIdBelegsteuReadOnly() {
+    return idBelegsteu;
+  }
+
+  public VWa010Belegsteu getKeyVWa010Belegsteu() {
+    return VWa010Belegsteu.createKey(isRegisteredObject(), vWa010Belegsteu, null, getIdBelegsteuReadOnly());
+  }
+
+  public VWa010Belegsteu getVWa010Belegsteu() {
+    return (VWa010Belegsteu) vWa010Belegsteu.getValue();
+  }
+
+  protected void keyToVWa010BelegsteuReadOnly(VWa010Belegsteu copyKey) {
+    VWa010Belegsteu key = new VWa010Belegsteu();
+    key.keyCopy(copyKey);
+    setIdBelegsteuReadOnly(key.getIdBelegsteu());
+  }
+
+  public void setEsArtSplittmeld(String esArtSplittmeld) {
+    this.esArtSplittmeld = esArtSplittmeld;
+  }
+
+  public void setEsKnzBelegsatz(String esKnzBelegsatz) {
+    this.esKnzBelegsatz = esKnzBelegsatz;
+  }
+
+  public void setEsKnzDiffGba(String esKnzDiffGba) {
+    this.esKnzDiffGba = esKnzDiffGba;
+  }
+
+  public void setEsKnzStornoGba(String esKnzStornoGba) {
+    this.esKnzStornoGba = esKnzStornoGba;
+  }
+
+  public void setEsKnzWmAufZuo(String esKnzWmAufZuo) {
+    this.esKnzWmAufZuo = esKnzWmAufZuo;
+  }
+  // Projektspezifische Erweiterungen END
+
+  public void setIdBelegsteuReadOnly(String idBelegsteuReadOnly) {
+    this.idBelegsteu = idBelegsteuReadOnly;
+  }
+
+  public void setKeyVWa010Belegsteu(VWa010Belegsteu newKey) {
+    if (isRegisteredObject()) {
+      newKey = VWa010Belegsteu.cleanKey(newKey);
+    }
+    setVWa010Belegsteu(newKey);
+  }
+
+  public void setVWa010Belegsteu(VWa010Belegsteu vWa010Belegsteu) {
+    this.vWa010Belegsteu.setValue(vWa010Belegsteu);
+  }
+
+  @Override
+  public void undoCleanForSpeedRead() {
+    super.undoCleanForSpeedRead();
+    undoCleanVWa010BelegsteuForSpeedRead();
+  }
+
+  protected void undoCleanVWa010BelegsteuForSpeedRead() {
+    if (getVWa010Belegsteu() == null) {
+      setVWa010Belegsteu(new VWa010Belegsteu());
+    }
+    getVWa010Belegsteu().keyCopy(saveVWa010Belegsteu);
+    saveVWa010Belegsteu = null;
+  }
+
+  public String getEsKnzTuete() {
+    return esKnzTuete;
+  }
+
+  public void setEsKnzTuete(String esKnzTuete) {
+    this.esKnzTuete = esKnzTuete;
+  }
+
+  public String getEsIdBrStrat() {
+    return esIdBrStrat;
+  }
+
+  public void setEsIdBrStrat(String esIdBrStrat) {
+    this.esIdBrStrat = esIdBrStrat;
+  }
+
+  public String getEsArtQtResRet() {
+    return esArtQtResRet;
+  }
+
+  public void setEsArtQtResRet(String esArtQtResRet) {
+    this.esArtQtResRet = esArtQtResRet;
+  }
+
+  /**
+   * deliver a EsWaTypVerlad-object with a correctly filled primary key
+   *
+   * @return {@link EsWaTypVerlad}
+   */
+  public EsWaTypVerlad getEsWaTypVerlad() {
+    EsWaTypVerlad ret = getMyEsWaTypVerlad();
+    ret.setTypVerlad(getEsTypVerlad());
+    return ret;
+  }
+
+  /**
+   * set the col-parent-pk of the child to the deliverd parent-object
+   *
+   * @param parent
+   */
+  public void setEsWaTypVerlad(EsWaTypVerlad parent) {
+    String tmp = null;
+    if (parent != null) tmp = parent.getTypVerlad();
+    setEsTypVerlad(tmp);
+  }
+
+  /**
+   * just to avoid the new within every call of getParent
+   *
+   * @return
+   */
+  private EsWaTypVerlad getMyEsWaTypVerlad() {
+    if (myEsWaTypVerlad == null) {
+      myEsWaTypVerlad = new EsWaTypVerlad();
+      // myEsWaTypVerlad.initializeExampleObject();
+    }
+    return myEsWaTypVerlad;
+  }
+
+  /**
+   * @return the esTypVerlad
+   */
+  public String getEsTypVerlad() {
+    return esTypVerlad;
+  }
+
+  /**
+   * @param esTypVerlad
+   *          the esTypVerlad to set
+   */
+  public void setEsTypVerlad(String esTypVerlad) {
+    this.esTypVerlad = esTypVerlad;
+  }
+
+  /**
+   * @return the esTypBestTypVerlad
+   */
+  public String getEsTypBestTypVerlad() {
+    return esTypBestTypVerlad;
+  }
+
+  /**
+   * @param esTypBestTypVerlad
+   *          the esTypBestTypVerlad to set
+   */
+  public void setEsTypBestTypVerlad(String esTypBestTypVerlad) {
+    this.esTypBestTypVerlad = esTypBestTypVerlad;
+  }
+
+  @Override
+  public Integer getBackgroundColorForField(String columnName, Integer currentBackground) {
+    if (isRegisteredObject() && columnName != null) {
+      if (columnName.equals("Stat")) {
+        if (getStat() != null && !getStat().equals(KonstantenCache.getWertGCS("KONFIG", "AKTIV"))) {
+          return EsGlobals.GRAY.getRGB();
+        }
+      }
+    }
+    return currentBackground;
+  }
+
+  @Override
+  public Font getFontForField(String columnName, Font currentFont) {
+    return null;
+  }
+
+  @Override
+  public Integer getForegroundColorForField(String columnName, Integer currentForeground) {
+    return null;
+  }
+
+  public String getEsKnzVsReduzierer() {
+    return esKnzVsReduzierer;
+  }
+
+  public void setEsKnzVsReduzierer(String esKnzVsReduzierer) {
+    this.esKnzVsReduzierer = esKnzVsReduzierer;
+  }
+
+  public String getEsKnzVsUmreifer() {
+    return esKnzVsUmreifer;
+  }
+
+  public void setEsKnzVsUmreifer(String esKnzVsUmreifer) {
+    this.esKnzVsUmreifer = esKnzVsUmreifer;
+  }
+
+  public String getEsKnzTatWaNakoNabe() {
+    return esKnzTatWaNakoNabe;
+  }
+
+  public void setEsKnzTatWaNakoNabe(String esKnzTatWaNakoNabe) {
+    this.esKnzTatWaNakoNabe = esKnzTatWaNakoNabe;
+  }
+
+  /**
+   * @return the esKnzDiffBrres
+   */
+  public String getEsKnzDiffBrres() {
+    return esKnzDiffBrres;
+  }
+
+  /**
+   * @param esKnzDiffBrres
+   *          the esKnzDiffBrres to set
+   */
+  public void setEsKnzDiffBrres(String esKnzDiffBrres) {
+    this.esKnzDiffBrres = esKnzDiffBrres;
+  }
+
+  /**
+   * @return the esKnzRovo
+   */
+  public String getEsKnzRovo() {
+    return esKnzRovo;
+  }
+
+  /**
+   * @param esKnzRovo
+   *          the esKnzRovo to set
+   */
+  public void setEsKnzRovo(String esKnzRovo) {
+    this.esKnzRovo = esKnzRovo;
+  }
+
+  public String getEsKnzDiffNapi() {
+    return esKnzDiffNapi;
+  }
+
+  public void setEsKnzDiffNapi(String esKnzDiffNapi) {
+    this.esKnzDiffNapi = esKnzDiffNapi;
+  }
+
+  @Override
+  public String[] getFieldPath(final PersistentObjectAttributeDescriptor descriptor) {
+    // Safety
+    if (descriptor == null) return null;
+    // Check for column-specific name
+    if ("EsTypVerlad".equals(descriptor.getColumnName())) return new String[] { "lagerReadOnly", "esTypVerlad" };
+    return super.getFieldPath(descriptor);
+  }
+
+  @Override
+  public void validateOnStore() {
+    super.validateOnStore();
+    if ("1".equals(getEsKnzDiffGba()) || "1".equals(getEsKnzDiffBrres()) || "1".equals(getEsKnzDiffNapi())) {
+      if (!("NAFI".equals(getTypAuf()) || "NAKO".equals(getTypAuf()))) throw new InwmsRuntimeException(WaWordTransMessages.Wa010ErrorKnzDiff);
+    }
+    if (KonstantenCache.getWertGCW("ART_QT_RES_RET", "NICHT", "3").equals(getEsArtQtResRet())) {
+      if (!("NAFI".equals(getTypAuf()))) throw new InwmsRuntimeException(WaWordTransMessages.Wa010ErrorArtQtRes);
+    }
+  }
+}

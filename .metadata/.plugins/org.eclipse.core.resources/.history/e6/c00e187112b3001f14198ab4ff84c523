@@ -1,0 +1,12 @@
+package adventofcode2;
+
+public class AdventOfCode {
+
+	public static void main(String[] args) {
+
+		// DayOne.readFile();
+		ArrayList<String> asd = {"sda","www"};
+		DayTwo.readFile();
+	}
+
+}

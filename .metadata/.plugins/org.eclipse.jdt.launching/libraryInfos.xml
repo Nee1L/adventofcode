@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+    <libraryInfo home="D:\inconso\bdnausb\jre" version="1.8.0_202">
+        <bootpath>
+            <entry path="D:\inconso\bdnausb\jre\lib\resources.jar"/>
+            <entry path="D:\inconso\bdnausb\jre\lib\rt.jar"/>
+            <entry path="D:\inconso\bdnausb\jre\lib\sunrsasign.jar"/>
+            <entry path="D:\inconso\bdnausb\jre\lib\jsse.jar"/>
+            <entry path="D:\inconso\bdnausb\jre\lib\jce.jar"/>
+            <entry path="D:\inconso\bdnausb\jre\lib\charsets.jar"/>
+            <entry path="D:\inconso\bdnausb\jre\lib\jfr.jar"/>
+            <entry path="D:\inconso\bdnausb\jre\classes"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="D:\inconso\bdnausb\jre\lib\ext"/>
+            <entry path="C:\Windows\Sun\Java\lib\ext"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="D:\inconso\bdnausb\jre\lib\endorsed"/>
+        </endorsedDirs>
+    </libraryInfo>
+    <libraryInfo home="C:\Users\mykyta.kostiuk\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_22.0.1.v20240426-1149" version="22.0.1">
+        <bootpath>
+            <entry path="null"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="null"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="null"/>
+        </endorsedDirs>
+    </libraryInfo>
+    <libraryInfo home="C:\Users\mykyta.kostiuk\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_22.0.1.v20240426-1149\jre" version="22.0.1"/>
+</libraryInfos>

@@ -1,0 +1,41 @@
+package com.inconso.inwms.model.sst.basis;
+
+import com.inconso.inwms.sst.model.basis.CompSstSaGruppenSaZuo;
+import com.inconso.iwf.expression.IFullExpression;
+import com.inconso.iwf.expression.IMasterDetailAction;
+import com.inconso.persistence.IExpression;
+import com.inconso.persistence.IUnitOfWork;
+
+/**
+ * the anchor for the project-class
+ *
+ * @author dschubert
+ *
+ */
+public class SstSaGruppenSaZuo extends CompSstSaGruppenSaZuo {
+
+  public IFullExpression getBtnSstKommRefZuo() {
+    return new IFullExpression() {
+
+      @Override
+      public IExpression getWhereExpression(IUnitOfWork uow) {
+        IExpression builder = uow.createExpression();
+        IExpression where = builder.get("ereignisReadOnly").equal(getEreignisReadOnly());
+        where = where.and(builder.get("satzartGruppe").equal(getSatzartGruppe()));
+        return where;
+      }
+
+      @Override
+      public Vector<IExpression> getOrderByExpression(IUnitOfWork uow) {
+        // TODO Auto-generated method stub
+        return null;
+      }
+
+      @Override
+      public IMasterDetailAction getMasterDetailAction() {
+        // TODO Auto-generated method stub
+        return null;
+      }
+    };
+  }
+}

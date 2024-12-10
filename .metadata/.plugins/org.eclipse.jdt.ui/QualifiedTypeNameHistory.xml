@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.inconso.inwms.model.bas.wa.WaPack"/>
+    <fullyQualifiedTypeName name="com.inconso.inwms.model.bas.es.wa.EsWerbspZuo"/>
+    <fullyQualifiedTypeName name="com.inconso.persistence.IExpression"/>
+    <fullyQualifiedTypeName name="com.inconso.iwf.expression.IFullExpression"/>
+    <fullyQualifiedTypeName name="com.inconso.inwms.model.bas.es.wa.EsCutoffZeiten"/>
+    <fullyQualifiedTypeName name="com.inconso.inwms.model.bas.es.wa.EsWaTypVerlad"/>
+    <fullyQualifiedTypeName name="com.inconso.inwms.model.bas.es.EsBrKonfResPos"/>
+</qualifiedTypeNameHistroy>

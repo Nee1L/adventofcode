@@ -1,0 +1,34 @@
+package com.inconso.inwms.model.sst.basis;
+
+import com.inconso.inwms.sst.model.basis.CompSstKommEreignis;
+/**
+ * the anchor for the project-class
+ * 
+ * @author dschubert
+ * 
+ */
+public class SstKommEreignis extends CompSstKommEreignis {
+  public IFullExpression getBtnSstSaGruppenSaZuo() {
+    return new IFullExpression() {
+
+      @Override
+      public IExpression getWhereExpression(IUnitOfWork uow) {
+        IExpression builder = uow.createExpression();
+        IExpression where = builder.get("ereignisReadOnly").equal(getEreignis());
+        return where;
+      }
+
+      @Override
+      public Vector<IExpression> getOrderByExpression(IUnitOfWork uow) {
+        // TODO Auto-generated method stub
+        return null;
+      }
+
+      @Override
+      public IMasterDetailAction getMasterDetailAction() {
+        // TODO Auto-generated method stub
+        return null;
+      }
+    };
+  }
+}

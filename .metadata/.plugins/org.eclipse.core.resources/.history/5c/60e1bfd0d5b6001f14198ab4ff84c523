@@ -1,0 +1,15 @@
+package adventofcode2;
+
+public class AdventOfCode {
+
+	public static void main(String[] args) {
+
+		// DayOne.readFile();
+//		ArrayList<String> asd = new ArrayList<>();
+//		asd.add("wqeqw");
+//		System.out.println(asd.toString());
+//		DayTwo.readFile();
+		DayThree.readFile();
+	}
+
+}

@@ -1,0 +1,11 @@
+package com.inconso.inwms.model.bas.schul;
+
+import com.inconso.inwms.model.gen.bas.schul.GenBeispielKom;
+
+public class BeispielKom extends GenBeispielKom {
+
+  public BeispielKom() {
+    super();
+  }
+
+}
