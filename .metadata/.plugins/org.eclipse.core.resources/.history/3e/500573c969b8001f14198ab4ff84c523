@@ -27,7 +27,6 @@ public class DayFour {
 				}
 			}
 		}
-		System.out.println(res);
 	}
 
 	private static int findMatches(String input) {
@@ -97,7 +96,6 @@ public class DayFour {
 				res += findMatches(buff);
 			}
 			System.out.println(res);
-			partTwo(arr);
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("An error occurred.");

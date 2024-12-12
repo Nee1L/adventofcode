@@ -4,7 +4,13 @@ public class AdventOfCode {
 
 	public static void main(String[] args) {
 
-		DayFive.readFile();
+		// DayOne.readFile();
+//		ArrayList<String> asd = new ArrayList<>();
+//		asd.add("wqeqw");
+//		System.out.println(asd.toString());
+//		DayTwo.readFile();
+		// DayThree.readFile();
+		DayFour.readFile();
 //		String buff = "";
 //		ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
 //		for (int i = 0; i < 6; i++) {
