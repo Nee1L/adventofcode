@@ -24,15 +24,15 @@ public class DaySix {
 		System.out.println();
 	}
 
-	private static int isEndlessLoop(List<List<String>> arr, int x, int y, String guard,
-			HashMap<String, Integer> bebra) {
+	private static int isEndlessLoop(List<List<String>> arr, int x, int y, String guard, HashMap<String, Integer> bebra,
+			int startX, int startY) {
 		String lol = "";
 		String guardCopy = new String(guard);
 		List<List<String>> buff = new ArrayList<>();
 		for (int i = 0; i < arr.size(); i++) {
 			List<String> asd = new ArrayList();
 			for (int j = 0; j < arr.get(i).size(); j++) {
-				asd.add(arr.get(i).get(j));
+				asd.add(new String(arr.get(i).get(j)));
 			}
 			buff.add(asd);
 		}
@@ -43,9 +43,12 @@ public class DaySix {
 				grenze = true;
 				break;
 			}
-//			if (buff.get(y - 1).get(x).equals("^")) {
-//				return 0;
-//			}
+			if (buff.get(y - 1).get(x).equals("^")) {
+				return 0;
+			}
+			if (buff.get(y - 1).get(x).equals("#")) {
+				return 0;
+			}
 			buff.get(y - 1).set(x, "#");
 			lol = y - 1 + " " + x;
 			if (bebra.get(lol) != null) {
@@ -58,9 +61,12 @@ public class DaySix {
 				grenze = true;
 				break;
 			}
-//			if (buff.get(y).get(x + 1).equals("^")) {
-//				return 0;
-//			}
+			if (buff.get(y).get(x + 1).equals("^")) {
+				return 0;
+			}
+			if (buff.get(y).get(x + 1).equals("#")) {
+				return 0;
+			}
 			buff.get(y).set(x + 1, "#");
 			lol = y + " " + (x + 1);
 			if (bebra.get(lol) != null) {
@@ -73,9 +79,12 @@ public class DaySix {
 				grenze = true;
 				break;
 			}
-//			if (buff.get(y + 1).get(x).equals("^")) {
-//				return 0;
-//			}
+			if (buff.get(y + 1).get(x).equals("^")) {
+				return 0;
+			}
+			if (buff.get(y + 1).get(x).equals("#")) {
+				return 0;
+			}
 			buff.get(y + 1).set(x, "#");
 			lol = (y + 1) + " " + x;
 			if (bebra.get(lol) != null) {
@@ -88,9 +97,12 @@ public class DaySix {
 				grenze = true;
 				break;
 			}
-//			if (buff.get(y).get(x - 1).equals("^")) {
-//				return 0;
-//			}
+			if (buff.get(y).get(x - 1).equals("^")) {
+				return 0;
+			}
+			if (buff.get(y).get(x - 1).equals("#")) {
+				return 0;
+			}
 			buff.get(y).set(x - 1, "#");
 			lol = y + " " + (x - 1);
 			if (bebra.get(lol) != null) {
@@ -102,9 +114,9 @@ public class DaySix {
 		if (grenze) {
 			return 0;
 		}
-		if (partOne(buff, x, y, guardCopy) == 1) {
+		if (partOne(buff, startX, startY, guard) == 1) {
 			bebra.put(lol, 1);
-			System.out.println(lol);
+			// System.out.println(lol);
 			return 1;
 		}
 		// bebra.put(x + " " + y, 0);
@@ -175,10 +187,10 @@ public class DaySix {
 		String guard = "^";
 		boolean end = false;
 		while (!end) {
+			res += isEndlessLoop(arr, j, i, guard, bebra, x, y);
 			switch (guard) {
 			case "^":
-				i--;
-				res += isEndlessLoop(arr, j, i, guard, bebra);
+
 				if ((arr.get(i).get(j).equals("-") || arr.get(i).get(j).equals("+"))
 						&& !arr.get(i).get(j).equals("^")) {
 					counter++;
@@ -202,11 +214,14 @@ public class DaySix {
 						arr.get(i).set(j, arr.get(i).get(j) + "E");
 					}
 					// printArray(arr, i, j, guard);
+				} else {
+
+					i--;
+
 				}
 				break;
 			case ">":
-				j++;
-				res += isEndlessLoop(arr, j, i, guard, bebra);
+
 				if ((arr.get(i).get(j).equals("|") || arr.get(i).get(j).equals("+"))
 						&& !arr.get(i).get(j).equals("^")) {
 					counter++;
@@ -230,11 +245,14 @@ public class DaySix {
 						arr.get(i).set(j, arr.get(i).get(j) + "S");
 					}
 					// printArray(arr, i, j, guard);
+				} else {
+
+					j++;
+
 				}
 				break;
 			case "v":
-				i++;
-				res += isEndlessLoop(arr, j, i, guard, bebra);
+
 				if ((arr.get(i).get(j).equals("-") || arr.get(i).get(j).equals("+"))
 						&& !arr.get(i).get(j).equals("^")) {
 					counter++;
@@ -258,11 +276,14 @@ public class DaySix {
 						arr.get(i).set(j, arr.get(i).get(j) + "W");
 					}
 					// printArray(arr, i, j, guard);
+				} else {
+
+					i++;
+
 				}
 				break;
 			case "<":
-				j--;
-				res += isEndlessLoop(arr, j, i, guard, bebra);
+
 				if ((arr.get(i).get(j).equals("|") || arr.get(i).get(j).equals("+"))
 						&& !arr.get(i).get(j).equals("^")) {
 					counter++;
@@ -286,6 +307,9 @@ public class DaySix {
 						arr.get(i).set(j, arr.get(i).get(j) + "N");
 					}
 					// printArray(arr, i, j, guard);
+				} else {
+
+					j--;
 				}
 				break;
 			}
@@ -296,6 +320,7 @@ public class DaySix {
 	private static int partOne(List<List<String>> arr, int x, int y, String guard) {
 		int i = y;
 		int j = x;
+		guard = "^";
 		// arr.get(i).set(j, "X");
 		int counter = 1;
 		int iterations = 0;
@@ -307,72 +332,78 @@ public class DaySix {
 			}
 			switch (guard) {
 			case "^":
-				i--;
-				if (!arr.get(i).get(j).equals("X")) {
-					counter++;
-					// arr.get(i).set(j, "X");
-				}
 				if (i <= 0) {
 					end = true;
 					break;
+				}
+				if (!arr.get(i).get(j).equals("X")) {
+					counter++;
+					arr.get(i).set(j, "X");
 				}
 				if (arr.get(i - 1).get(j).equals("#")) {
 					guard = ">";
 					// arr.get(i).set(j, ">");
 					// printArray(arr, i, j, guard);
+				} else {
+					i--;
 				}
 				break;
 			case ">":
-				j++;
-				if (!arr.get(i).get(j).equals("X")) {
-					counter++;
-					//// arr.get(i).set(j, "X");
-				}
 				if (j >= arr.get(i).size() - 1) {
 					end = true;
 					break;
+				}
+				if (!arr.get(i).get(j).equals("X")) {
+					counter++;
+					arr.get(i).set(j, "X");
 				}
 				if (arr.get(i).get(j + 1).equals("#")) {
 					guard = "v";
 					// arr.get(i).set(j, "v");
 					// printArray(arr, i, j, guard);
+				} else {
+					j++;
 				}
 				break;
 			case "v":
-				i++;
-				if (!arr.get(i).get(j).equals("X")) {
-					counter++;
-					/// arr.get(i).set(j, "X");
-				}
 				if (i >= arr.size() - 1) {
 					end = true;
 					break;
+				}
+				if (!arr.get(i).get(j).equals("X")) {
+					counter++;
+					arr.get(i).set(j, "X");
 				}
 				if (arr.get(i + 1).get(j).equals("#")) {
 					guard = "<";
 					// arr.get(i).set(j, "<");
 					// printArray(arr, i, j, guard);
+				} else {
+					i++;
 				}
 				break;
 			case "<":
-				j--;
-				if (!arr.get(i).get(j).equals("X")) {
-					counter++;
-					// arr.get(i).set(j, "X");
-				}
 				if (j <= 0) {
 					end = true;
 					break;
 				}
+				if (!arr.get(i).get(j).equals("X")) {
+					counter++;
+					arr.get(i).set(j, "X");
+				}
+
 				if (arr.get(i).get(j - 1).equals("#")) {
 					guard = "^";
 					// arr.get(i).set(j, "^");
 					// printArray(arr, i, j, guard);
+				} else {
+					j--;
 				}
 				break;
 			}
 		}
-		// System.out.println(counter);
+//		System.out.println(counter);
+//		System.out.println(iterations);
 		return 0;
 	}
 
@@ -396,6 +427,7 @@ public class DaySix {
 			}
 			System.out.println("\n");
 			partTwo(arr, x, y);
+//			partOne(arr, x, y, "^");
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("An error occurred.");
