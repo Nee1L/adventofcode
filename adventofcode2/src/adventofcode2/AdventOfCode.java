@@ -4,47 +4,22 @@ public class AdventOfCode {
 
 	public static void main(String[] args) {
 
-		DaySix.readFile();
-//		String buff = "";
-//		ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
-//		for (int i = 0; i < 6; i++) {
-//			ArrayList<Integer> bebra = new ArrayList<>();
-//			for (int j = 0; j < 6; j++) {
-//				bebra.add(j);
-//				// System.out.print("0 ");
-//			}
-//			// System.out.println();
-//			arr.add(bebra);
-//		}
-//		for (int i = 0; i < 6; i++) {
-//			ArrayList<Integer> bebra = new ArrayList<>();
-//			for (int j = 0; j < 6; j++) {
-//				System.out.print(arr.get(i).get(j) + " ");
-//			}
-//			System.out.println();
-//		}
-//		for (int k = -6; k < 6; k++) {
-//			buff = "";
-//			for (int i = 0; i < 6; i++) {
-//				for (int j = 0; j < 6; j++) {
-//					if (i == j + k) {
-//						buff = buff + String.valueOf(arr.get(i).get(j));
-//						arr.get(i).set(j, 1);
+		// DaySix.readFile();
+//		int a = (int) Math.pow(2, 4 - 1);
+//		for (int i = 0; i < a; i++) {
+//			String c = Integer.toBinaryString(i);
+//			String b = Integer.toBinaryString(a - 1);
+//			int b1 = 3;
+//			for (int j = c.length(); j < b.length(); j++) {
+//				c = "0" + c;
 //
-//						// continue;
-//					}
-//					// System.out.print(0);
-//				}
 //			}
-//			System.out.println(buff);
+//			System.out.println(c);
 //		}
-//		for (int i = 0; i < 6; i++) {
-//			ArrayList<Integer> bebra = new ArrayList<>();
-//			for (int j = 0; j < 6; j++) {
-//				System.out.print(arr.get(i).get(j) + " ");
-//			}
-//			System.out.println();
-//		}
+//		System.out.println(Integer.toBinaryString(a));
+////		System.out.println(b);
+		DaySeven.readFile();
+
 	}
 
 }

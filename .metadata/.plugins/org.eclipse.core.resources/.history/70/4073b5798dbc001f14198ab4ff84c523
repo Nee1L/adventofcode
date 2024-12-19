@@ -1,0 +1,11 @@
+package adventofcode2;
+
+public class AdventOfCode {
+
+	public static void main(String[] args) {
+
+		// DaySix.readFile();
+		System.out.println(Integer.toBinaryString(Math.pow(2, 3)));
+	}
+
+}
